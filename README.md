@@ -1,8 +1,8 @@
 # Vitabit
 
-Vitabit is a full-stack web app designed to make daily supplement and medication routines easier and less stressful.
+Vitabit is a full-stack wellness web app designed to make supplement, medication, and meal tracking easier and less stressful.
 
-The current version lets users search supplements and view practical information such as benefits, how to take them, and recommended daily intake.
+The current version includes catalog search, household profiles, AI wellness coaching, meal photo analysis, and tracked routine support.
 
 ## Planned Features
 - Smart reminders that adapt to each user's routine (not just fixed alarms)
@@ -13,5 +13,5 @@ The current version lets users search supplements and view practical information
 - Backend: Flask (Python)
 - Frontend: HTML/CSS/JavaScript
 - Database: MongoDB Atlas
-- Deployment: AWS EC2
+- Deployment: Vercel
 - CI/CD: GitHub Actions
