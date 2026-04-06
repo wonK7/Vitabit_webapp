@@ -67,19 +67,6 @@ NUTRIENT_TARGET_NAMES = {
 DEFAULT_TARGET_REFERENCES = {
 }
 
-CATALOG_IMAGE_MAP = {
-    "Vitamin C": "/static/images/vitamin-c.svg",
-    "Vitamin D3": "/static/images/vitamin-d3.svg",
-    "Magnesium": "/static/images/magnesium.svg",
-    "Vitamin B12": "/static/images/vitamin-b12.svg",
-    "Calcium": "/static/images/calcium.svg",
-    "Iron": "/static/images/iron.svg",
-    "Zinc": "/static/images/zinc.svg",
-    "Omega-3 Fish Oil": "/static/images/omega-3.svg",
-    "Probiotics": "/static/images/probiotics.svg",
-    "Multivitamin": "/static/images/multivitamin.svg",
-}
-
 
 def utcnow():
     return datetime.now(timezone.utc)
@@ -104,10 +91,6 @@ def serialize_document(document):
         serialized["profile_id"] = str(serialized["profile_id"])
     if "tracked_item_id" in serialized and isinstance(serialized["tracked_item_id"], ObjectId):
         serialized["tracked_item_id"] = str(serialized["tracked_item_id"])
-    if not serialized.get("image_url"):
-        mapped_image = CATALOG_IMAGE_MAP.get(serialized.get("name"))
-        if mapped_image:
-            serialized["image_url"] = mapped_image
     return serialized
 
 
@@ -134,20 +117,14 @@ def get_response_text(response):
 
 
 def load_catalog(limit=None):
-    try:
-        cursor = supplements_collection.find({}, {"_id": 0}).sort("name", 1)
-        if limit is not None:
-            cursor = cursor.limit(limit)
-        return list(cursor)
-    except PyMongoError as exc:
-        print(f"MongoDB catalog load failed: {exc}")
-        return []
+    cursor = supplements_collection.find({}, {"_id": 0}).sort("name", 1)
+    if limit is not None:
+        cursor = cursor.limit(limit)
+    return list(cursor)
 
 
 def build_catalog_context(max_items=20):
     items = load_catalog(limit=max_items)
-    if not items:
-        return "- Catalog unavailable right now. Answer with general wellness guidance."
     return "\n".join(
         f"- {item.get('name')} [{item.get('category', 'Supplement')}]: {item.get('benefit', 'General wellness support')}"
         for item in items
@@ -690,14 +667,28 @@ def search_vitamin_info(keyword=None):
         return jsonify([])
 
     escaped_keyword = re.escape(keyword)
-    query = {
-        "$or": [
-            {"name": {"$regex": escaped_keyword, "$options": "i"}},
-            {"category": {"$regex": escaped_keyword, "$options": "i"}},
-            {"benefit": {"$regex": escaped_keyword, "$options": "i"}},
-            {"keywords": {"$regex": escaped_keyword, "$options": "i"}},
-        ]
-    }
+    keyword_length = len(keyword)
+
+    if keyword_length == 1:
+        # Single-character searches should feel precise, not like a full-text scan.
+        query = {"name": {"$regex": f"^{escaped_keyword}", "$options": "i"}}
+    elif keyword_length == 2:
+        # Short searches can widen slightly, but still prefer prefix-style matches.
+        query = {
+            "$or": [
+                {"name": {"$regex": f"^{escaped_keyword}", "$options": "i"}},
+                {"keywords": {"$regex": f"^{escaped_keyword}", "$options": "i"}},
+            ]
+        }
+    else:
+        query = {
+            "$or": [
+                {"name": {"$regex": escaped_keyword, "$options": "i"}},
+                {"category": {"$regex": escaped_keyword, "$options": "i"}},
+                {"benefit": {"$regex": escaped_keyword, "$options": "i"}},
+                {"keywords": {"$regex": escaped_keyword, "$options": "i"}},
+            ]
+        }
 
     try:
         for item in supplements_collection.find(query).sort("name", 1):
