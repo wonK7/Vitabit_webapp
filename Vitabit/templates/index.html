@@ -1632,24 +1632,43 @@
             `;
         }
 
+        function renderCatalogResults(items, statusMessage) {
+            $("#result_list").empty();
+            $("#search_status").text(statusMessage || (items.length ? items.length + " results found" : "No results found"));
+            if (!items.length) {
+                $("#result_list").html("<li class='empty-state'>The catalog is empty right now. Try reseeding the database or refreshing in a moment.</li>");
+                return;
+            }
+            items.forEach(function (item) {
+                $("#result_list").append(buildSupplementCard(item));
+            });
+        }
+
+        function loadCatalog() {
+            $("#search_status").text("Loading catalog...");
+            $.getJSON("/catalog", function (data) {
+                renderCatalogResults(data, data.length + " catalog items loaded");
+            }).fail(function () {
+                $("#search_status").text("Catalog failed to load.");
+                $("#result_list").html("<li class='empty-state'>The catalog did not load right now. Try again in a moment.</li>");
+            });
+        }
+
         function search() {
             var keyword = $("#budget_input").val().trim();
             if (!keyword) {
-                $("#result_list").html("<li class='empty-state'>Search a vitamin, mineral, med, or supplement to pull it onto your shelf.</li>");
+                loadCatalog();
                 return;
             }
 
             $("#search_status").text("Searching...");
             $.getJSON(`/search/${encodeURIComponent(keyword)}`, function (data) {
-                $("#result_list").empty();
-                $("#search_status").text(data.length ? data.length + " results found" : "No results found");
                 if (!data.length) {
+                    $("#search_status").text("No results found");
                     $("#result_list").html("<li class='empty-state'>Nothing matched that search yet. Try a nutrient, brand, or use case.</li>");
                     return;
                 }
-                data.forEach(function (item) {
-                    $("#result_list").append(buildSupplementCard(item));
-                });
+                renderCatalogResults(data, data.length + " results found");
             }).fail(function () {
                 $("#search_status").text("Search failed.");
                 $("#result_list").html("<li class='empty-state'>The catalog did not load right now. Try again in a moment.</li>");
@@ -1770,6 +1789,7 @@
         $(function () {
             renderSchedule();
             loadAccountData();
+            loadCatalog();
             updateNotificationState();
             startReminderLoop();
 
