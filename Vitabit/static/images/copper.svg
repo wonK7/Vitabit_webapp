@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Copper icon">
+  <rect width="240" height="240" rx="44" fill="#eef6ff"/>
+  <path d="M120 54l52 28v34c0 36-22 60-52 72-30-12-52-36-52-72V82l52-28z" fill="#3a86ff"/>
+  <path d="M96 122h48" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="120" cy="98" r="12" fill="#ffffff"/>
+  <circle cx="120" cy="146" r="12" fill="#7cc6fe"/>
+  <text x="120" y="204" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" fill="#1d4f91">Copper</text>
+</svg>

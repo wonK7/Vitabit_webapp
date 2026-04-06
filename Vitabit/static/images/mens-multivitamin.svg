@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Men's Multivitamin icon">
+  <rect width="240" height="240" rx="44" fill="#f1ece2"/>
+  <rect x="70" y="70" width="100" height="100" rx="28" fill="#2d7a62"/>
+  <path d="M120 92v56M92 120h56" stroke="#fff8ef" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="120" cy="70" r="18" fill="#8bd3c7"/>
+  <text x="120" y="204" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" fill="#205747">Men</text>
+</svg>

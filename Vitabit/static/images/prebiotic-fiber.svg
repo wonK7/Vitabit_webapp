@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Prebiotic Fiber icon">
+  <rect width="240" height="240" rx="44" fill="#f5f5f5"/>
+  <circle cx="120" cy="118" r="54" fill="#4f772d"/>
+  <path d="M120 156c-18-20-28-42-30-68 20 1 42 11 68 30-18 22-30 34-38 38z" fill="#fffdf3"/>
+  <path d="M84 144c24-8 48-20 68-42" stroke="#a7c957" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <text x="120" y="204" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" fill="#2f3e1f">Fiber</text>
+</svg>

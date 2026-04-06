@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Lutein icon">
+  <rect width="240" height="240" rx="44" fill="#f5f5f5"/>
+  <circle cx="120" cy="118" r="54" fill="#4f772d"/>
+  <circle cx="120" cy="118" r="26" fill="#fff8ef"/>
+  <circle cx="120" cy="118" r="12" fill="#a7c957"/>
+  <path d="M82 118c12-22 28-34 38-34 14 0 28 12 38 34-10 22-24 34-38 34-10 0-26-12-38-34z" stroke="#a7c957" stroke-width="8" fill="none" stroke-linejoin="round"/>
+  <text x="120" y="204" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" fill="#2f3e1f">Lutein</text>
+</svg>

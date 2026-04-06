@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Hair Skin and Nails Formula icon">
+  <rect width="240" height="240" rx="44" fill="#fff0f6"/>
+  <rect x="64" y="90" width="112" height="60" rx="30" fill="#d63384"/>
+  <path d="M120 90v60" stroke="#fff8ef" stroke-width="8"/>
+  <circle cx="94" cy="120" r="14" fill="#f4b6d2" opacity="0.85"/>
+  <circle cx="146" cy="120" r="14" fill="#fff8ef" opacity="0.9"/>
+  <text x="120" y="204" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" fill="#8c1d5b">HSN</text>
+</svg>

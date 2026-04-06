@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Vitamin B7 icon">
+  <rect width="240" height="240" rx="44" fill="#fff1e8"/>
+  <rect x="72" y="62" width="96" height="112" rx="30" fill="#f28c28"/>
+  <circle cx="120" cy="116" r="30" fill="#fff8ef"/>
+  <path d="M106 98h18c12 0 20 7 20 17 0 8-5 13-12 15 9 2 15 8 15 17 0 12-10 19-25 19h-16V98zm15 13v14h4c6 0 10-3 10-7s-4-7-10-7h-4zm0 27v15h5c7 0 11-3 11-8 0-4-4-7-11-7h-5z" fill="#f28c28"/>
+  <path d="M90 76c8-12 18-18 30-18s22 6 30 18" stroke="#7a9e45" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <text x="120" y="204" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a5418">B7</text>
+</svg>
